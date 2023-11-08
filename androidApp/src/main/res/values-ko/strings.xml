@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">스트롱거</string>
+    <string name="msg_onboarding_welcome_headline">스트롱거에 오신걸\n환영합니다</string>
+    <string name="content_desc_onboarding_workout_feature_draw_line">스트롱거 첫번째 기능 \'가상의 선 그리기\' 설명 이미지</string>
+    <string name="msg_title_onboarding_workout_feature_draw_line">가상의 선을 그어 최적의 자세를 찾으세요!</string>
+    <string name="msg_description_onboarding_workout_feature_draw_line">그러고, 근육의 수축과 이완에만 집중하세요.</string>
+
+</resources>
