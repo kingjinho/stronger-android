@@ -52,5 +52,8 @@ dependencies {
     implementation(libs.compose.material3)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.firebase.bom))
+    implementation(project(mapOf("path" to ":shared")))
     debugImplementation(libs.compose.ui.tooling)
+
+    implementation(libs.androidx.navigation.compose)
 }
