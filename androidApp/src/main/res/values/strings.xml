@@ -5,4 +5,5 @@
     <string name="content_desc_onboarding_workout_feature_draw_line">image describes a feature \'draw line\'</string>
     <string name="msg_title_onboarding_workout_feature_draw_line">Draw Lines for Your Perfect Form</string>
     <string name="msg_description_onboarding_workout_feature_draw_line"><![CDATA[Then, Nice & Slow, with Focus]]></string>
+    <string name="msg_btn_start_working_out">Start Workout</string>
 </resources>
