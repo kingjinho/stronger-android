@@ -7,8 +7,6 @@ compose-material3 = "1.1.2"
 androidx-activityCompose = "1.7.2"
 google-services = "4.4.0"
 firebase-bom = "32.5.0"
-moko-resources = "0.23.0"
-moko-resources-ios = "0.9.0"
 navigationCompose = "2.7.5"
 
 [libraries]
@@ -22,11 +20,6 @@ compose-foundation = { module = "androidx.compose.foundation:foundation", versio
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase-bom" }
 
-moko-resources-generator = { group = "dev.icerock.moko", name = "resources-generator", version.ref = "moko-resources" }
-moko-resources = { group = "dev.icerock.moko", name = "resources", version.ref = "moko-resources" }
-moko-resources-compose = { group = "dev.icerock.moko", name = "resources-compose", version.ref = "moko-resources" }
-moko-resources-test = { group = "dev.icerock.moko", name = "resources-test", version.ref = "moko-resources" }
-moko-resources-graphics-ios = { group = "dev.icerock.moko", name = "resources-graphics", version.ref = "moko-resources-ios" }
 
 
 [plugins]
@@ -36,4 +29,3 @@ kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
 gmsGoogleServices = { id = "com.google.gms.google-services", version.ref = "google-services" }
-mokoMultiplatformResources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko-resources" }
