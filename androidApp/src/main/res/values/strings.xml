@@ -6,4 +6,10 @@
     <string name="msg_title_onboarding_workout_feature_draw_line">Draw Lines for Your Perfect Form</string>
     <string name="msg_description_onboarding_workout_feature_draw_line"><![CDATA[Then, Nice & Slow, with Focus]]></string>
     <string name="msg_btn_start_working_out">Start Workout</string>
+    <string name="msg_btn_next">Next</string>
+    <string name="msg_onboarding_permission_headline">Permission we need</string>
+    <string name="msg_onboarding_permission_description">The followings are the only permissions we need to use app</string>
+    <string name="msg_btn_onboarding_permission_allow">Allow permissions</string>
+    <string name="content_desc_onboarding_permission_camera">camera permission</string>
+    <string name="msg_onboarding_permission_camera_needed">We need a permission to use camera to capture while working out</string>
 </resources>
