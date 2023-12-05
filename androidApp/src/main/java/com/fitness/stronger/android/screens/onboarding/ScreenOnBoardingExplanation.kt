@@ -47,7 +47,7 @@ fun ScreenOnBoardingExplanation(modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             Image(
-                painter = painterResource(id = R.drawable.img_workout_onboarding),
+                painter = painterResource(id = R.drawable.ic_workout_onboarding),
                 contentDescription = stringResource(id = R.string.content_desc_onboarding_workout_feature_draw_line),
             )
             Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {

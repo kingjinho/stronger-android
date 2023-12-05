@@ -62,7 +62,7 @@ fun ScreenOnBoardingPermission(modifier: Modifier = Modifier) {
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.img_onboarding_permission_camera),
+                    painter = painterResource(id = R.drawable.ic_onboarding_permission_camera),
                     contentDescription = stringResource(id = R.string.content_desc_onboarding_permission_camera),
                 )
 
