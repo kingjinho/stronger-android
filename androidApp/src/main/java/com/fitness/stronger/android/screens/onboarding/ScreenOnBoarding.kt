@@ -17,7 +17,7 @@ fun ScreenOnBoarding() {
 
     HorizontalPager(state = pagerState) { page ->
         when (page) {
-            0 -> ScreenOnBoardingExplanation()
+            0 -> ScreenOnBoardingWelcome()
             1 -> ScreenOnBoardingPermission()
         }
     }
