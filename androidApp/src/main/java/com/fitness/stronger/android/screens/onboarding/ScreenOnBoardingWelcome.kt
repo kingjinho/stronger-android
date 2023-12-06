@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.sp
 import com.fitness.stronger.android.R
 
 @Composable
-fun ScreenOnBoardingExplanation(modifier: Modifier = Modifier) {
+fun ScreenOnBoardingWelcome(modifier: Modifier = Modifier) {
     Column(modifier = modifier.padding(horizontal = 20.dp, vertical = 48.dp)) {
 
         Text(
@@ -95,11 +95,11 @@ fun ScreenOnBoardingExplanation(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 fun ScreenOnBoardingExplanationPreview() {
-    ScreenOnBoardingExplanation()
+    ScreenOnBoardingWelcome()
 }
 
 @Preview(locale = "ko")
 @Composable
 fun ScreenOnBoardingExplanationPreviewKR() {
-    ScreenOnBoardingExplanation()
+    ScreenOnBoardingWelcome()
 }
