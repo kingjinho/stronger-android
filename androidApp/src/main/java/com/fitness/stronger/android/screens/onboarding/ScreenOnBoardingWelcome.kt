@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,17 +28,19 @@ import androidx.compose.ui.unit.sp
 import com.fitness.stronger.android.R
 
 @Composable
-fun ScreenOnBoardingWelcome(modifier: Modifier = Modifier) {
+fun ScreenOnBoardingWelcome(
+    modifier: Modifier = Modifier,
+    onClickNext: () -> Unit = {},
+) {
     Column(modifier = modifier.padding(horizontal = 20.dp, vertical = 48.dp)) {
 
         Text(
             text = stringResource(id = R.string.msg_onboarding_welcome_headline),
-            fontFamily = FontFamily(Font(R.font.sf_pro)),
-            fontSize = 40.sp,
-            fontWeight = FontWeight.W600,
             color = Color.White,
             style = TextStyle(
-                fontSize = 40.sp
+                fontFamily = FontFamily(Font(R.font.sf_pro)),
+                fontSize = 40.sp,
+                fontWeight = FontWeight.W600,
             )
         )
         Spacer(modifier = Modifier.height(56.dp))
@@ -53,15 +56,14 @@ fun ScreenOnBoardingWelcome(modifier: Modifier = Modifier) {
             Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
                 Text(
                     text = stringResource(id = R.string.msg_title_onboarding_workout_feature_draw_line),
-                    fontFamily = FontFamily(Font(R.font.sf_pro)),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.W600,
                     color = Color.White,
-                    style = TextStyle(
-                        platformStyle = PlatformTextStyle(
-                            includeFontPadding = false
+                    style = MaterialTheme.typography.titleMedium
+                        .copy(
+                            platformStyle = PlatformTextStyle(
+                                includeFontPadding = false
+                            ),
+                            fontWeight = FontWeight.W600,
                         )
-                    )
                 )
 
                 Text(
@@ -82,7 +84,7 @@ fun ScreenOnBoardingWelcome(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.weight(1f))
 
         Button(
-            onClick = { },
+            onClick = onClickNext,
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(
