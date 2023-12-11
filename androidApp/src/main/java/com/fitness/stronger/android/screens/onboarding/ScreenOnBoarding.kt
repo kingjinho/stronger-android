@@ -19,7 +19,7 @@ fun ScreenOnBoarding(modifier: Modifier = Modifier) {
         })
     val coroutineScope = rememberCoroutineScope()
 
-    HorizontalPager(state = pagerState) { page ->
+    HorizontalPager(modifier = modifier, state = pagerState) { page ->
         when (page) {
             0 -> ScreenOnBoardingWelcome {
                 coroutineScope.launch {
