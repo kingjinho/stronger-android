@@ -6,4 +6,5 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform).apply(false)
     alias(libs.plugins.kotlinCocoapods).apply(false)
     alias(libs.plugins.gmsGoogleServices).apply(false)
+    alias(libs.plugins.hilt).apply(false)
 }
