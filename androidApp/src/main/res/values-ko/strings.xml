@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">스트롱거</string>
     <string name="msg_onboarding_welcome_headline">스트롱거에 오신걸\n환영합니다</string>
-    <string name="content_desc_onboarding_workout_feature_draw_line">스트롱거 첫번째 기능 \'가상의 선 그리기\' 설명 이미지</string>
     <string name="msg_title_onboarding_workout_feature_draw_line">가상의 선을 그어 최적의 자세를 찾으세요!</string>
     <string name="msg_description_onboarding_workout_feature_draw_line">그러고, 근육의 수축과 이완에만 집중하세요.</string>
     <string name="msg_btn_start_working_out">운동 시작하기</string>
@@ -10,6 +9,10 @@
     <string name="msg_onboarding_permission_headline">필요 권한 설명:</string>
     <string name="msg_onboarding_permission_description">아래 권한은 스트롱거를 사용하기 위해 필요한 권한입니다</string>
     <string name="msg_btn_onboarding_permission_allow">권한 부여하기</string>
-    <string name="content_desc_onboarding_permission_camera">카메라 권한</string>
+
     <string name="msg_onboarding_permission_camera_needed">운동하는 동안의 동작을 감지하기 위해 카메라 권한이 필요합니다.</string>
+
+    <string name="content_desc_onboarding_workout_feature_draw_line">스트롱거 첫번째 기능 \'가상의 선 그리기\' 설명 이미지</string>
+    <string name="content_desc_onboarding_permission_camera">카메라 권한</string>
+    <string name="content_desc_screen_main_image">메인화면 이미지</string>
 </resources>

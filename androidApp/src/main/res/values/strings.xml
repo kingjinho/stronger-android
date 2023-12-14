@@ -12,4 +12,5 @@
     <string name="msg_btn_onboarding_permission_allow">Allow permissions</string>
     <string name="content_desc_onboarding_permission_camera">camera permission</string>
     <string name="msg_onboarding_permission_camera_needed">We need a permission to use camera to capture while working out</string>
+    <string name="content_desc_screen_main_image">main screen image</string>
 </resources>
