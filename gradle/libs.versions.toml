@@ -3,12 +3,13 @@ agp = "8.2.0"
 junit = "4.13.2"
 kotlin = "1.9.10"
 compose = "1.5.1"
+compose-accompanist = "0.32.0"
 compose-compiler = "1.5.3"
 compose-material3 = "1.1.2"
 androidx-activityCompose = "1.7.2"
 google-services = "4.4.0"
 firebase-bom = "32.5.0"
-navigationCompose = "2.7.5"
+navigationCompose = "2.7.6"
 hilt = "2.44"
 
 [libraries]
@@ -18,13 +19,13 @@ hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", ve
 junit = { module = "junit:junit", version.ref = "junit" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+compose-accompanist-permission = { group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "compose-accompanist" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase-bom" }
-
 
 
 [plugins]

@@ -56,8 +56,9 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(project(mapOf("path" to ":shared")))
     debugImplementation(libs.compose.ui.tooling)
-
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.compose.accompanist.permission)
+
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
