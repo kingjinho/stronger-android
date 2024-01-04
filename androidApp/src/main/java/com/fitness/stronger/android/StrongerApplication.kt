@@ -2,7 +2,6 @@ package com.fitness.stronger.android
 
 import android.app.Application
 import android.content.SharedPreferences
-import com.fitness.stronger.Const
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
