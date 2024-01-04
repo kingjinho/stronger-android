@@ -10,4 +10,5 @@
 - refactor: refactoring
 - bugfix
 - test
+- docs
 
