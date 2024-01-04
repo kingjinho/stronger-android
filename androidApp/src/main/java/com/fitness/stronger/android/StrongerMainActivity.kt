@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.fitness.stronger.Const
 import com.fitness.stronger.android.screens.main.ScreenMain
 import com.fitness.stronger.android.screens.main.camera.ScreenCameraView
 import com.fitness.stronger.android.screens.navigation.Route

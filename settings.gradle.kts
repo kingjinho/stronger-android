@@ -16,4 +16,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "stronger"
 include(":androidApp")
-include(":shared")

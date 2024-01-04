@@ -1,6 +1,7 @@
 package com.fitness.stronger.android.screens.navigation
 
-import com.fitness.stronger.Const
+import com.fitness.stronger.android.Const
+
 
 sealed class Route {
     abstract val name: String
