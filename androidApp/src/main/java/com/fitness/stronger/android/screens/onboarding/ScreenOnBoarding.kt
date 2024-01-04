@@ -11,7 +11,10 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ScreenOnBoarding(modifier: Modifier = Modifier) {
+fun ScreenOnBoarding(
+    modifier: Modifier = Modifier,
+    onClickAllowPermission: () -> Unit = {}
+) {
     val pagerState = rememberPagerState(
         initialPage = 0,
         pageCount = {
@@ -27,7 +30,7 @@ fun ScreenOnBoarding(modifier: Modifier = Modifier) {
                 }
             }
 
-            1 -> ScreenOnBoardingPermission()
+            1 -> ScreenOnBoardingPermission(onClickAllow = onClickAllowPermission)
         }
     }
 }

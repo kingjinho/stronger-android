@@ -19,7 +19,14 @@ struct ScreenOnboardingWelcome: View {
             HStack {
                 Image("ic_workout_onboarding")
                     .frame(width: 37, height: 37)
-
+                
+                VStack {
+                    Text("msg_title_onboarding_workout_feature_draw_line".localized)
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.white)
+                    Text("msg_description_onboarding_workout_feature_draw_line".localized)
+                }
+                
             }
             
             Spacer()
@@ -36,12 +43,14 @@ struct ScreenOnboardingWelcome: View {
             .foregroundColor(.white)
             .buttonStyle(.borderless)
             .cornerRadius(8)
-        }
+        }     
     }
 }
 
 struct ScreenOnboardingWelcome_Previews: PreviewProvider {
     static var previews: some View {
         ScreenOnboardingWelcome()
+            .environment(\.locale, .init(identifier: "ko_KR"))
+
     }
 }

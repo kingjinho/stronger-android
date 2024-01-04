@@ -26,7 +26,10 @@ import androidx.compose.ui.unit.sp
 import com.fitness.stronger.android.R
 
 @Composable
-fun ScreenOnBoardingPermission(modifier: Modifier = Modifier) {
+fun ScreenOnBoardingPermission(
+    modifier: Modifier = Modifier,
+    onClickAllow: () -> Unit = {}
+) {
     Column(
         modifier = modifier.padding(horizontal = 20.dp, vertical = 48.dp)
     ) {
@@ -86,7 +89,8 @@ fun ScreenOnBoardingPermission(modifier: Modifier = Modifier) {
         Button(
             modifier = modifier
                 .fillMaxWidth(),
-            onClick = { }) {
+            onClick = onClickAllow
+        ) {
             Text(text = stringResource(id = R.string.msg_btn_onboarding_permission_allow))
         }
 

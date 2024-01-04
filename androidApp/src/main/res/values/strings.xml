@@ -13,4 +13,7 @@
     <string name="content_desc_onboarding_permission_camera">camera permission</string>
     <string name="msg_onboarding_permission_camera_needed">We need a permission to use camera to capture while working out</string>
     <string name="content_desc_screen_main_image">main screen image</string>
+    <string name="msg_btn_screen_main_start_working_out">Camera View</string>
+    <string name="msg_btn_turn_on_pose_detection">Pose Detection On</string>
+    <string name="content_desc_flip_camera_button">Flip camera</string>
 </resources>
