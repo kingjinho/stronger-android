@@ -52,7 +52,9 @@ android {
 }
 
 dependencies {
-    implementation(projects.shared)
+
+//    implementation(projects.shared)
+//    implementation(project(mapOf("path" to ":shared")))
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.compose.ui.viewBinding)
@@ -62,7 +64,6 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.firebase.bom))
-    implementation(project(mapOf("path" to ":shared")))
     debugImplementation(libs.compose.ui.tooling)
     implementation(libs.androidx.navigation.compose)
 
