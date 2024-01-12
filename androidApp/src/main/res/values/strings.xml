@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Stronger</string>
+
     <string name="msg_onboarding_welcome_headline">Welcome to\nStronger!</string>
-    <string name="content_desc_onboarding_workout_feature_draw_line">image describes a feature \'draw line\'</string>
     <string name="msg_title_onboarding_workout_feature_draw_line">Draw Lines for Your Perfect Form</string>
     <string name="msg_description_onboarding_workout_feature_draw_line"><![CDATA[Then, Nice & Slow, with Focus]]></string>
     <string name="msg_btn_start_working_out">Start Workout</string>
@@ -10,10 +10,14 @@
     <string name="msg_onboarding_permission_headline">Permission need before start</string>
     <string name="msg_onboarding_permission_description">The followings are the only permissions we need to use app</string>
     <string name="msg_btn_onboarding_permission_allow">Allow permissions</string>
-    <string name="content_desc_onboarding_permission_camera">camera permission</string>
     <string name="msg_onboarding_permission_camera_needed">We need a permission to use camera to capture while working out</string>
-    <string name="content_desc_screen_main_image">main screen image</string>
     <string name="msg_btn_screen_main_start_working_out">Camera View</string>
     <string name="msg_btn_turn_on_pose_detection">Pose Detection On</string>
+
+    <string name="content_desc_onboarding_workout_feature_draw_line">image describes a feature \'draw line\'</string>
+    <string name="content_desc_onboarding_permission_camera">camera permission</string>
+    <string name="content_desc_screen_main_image">main screen image</string>
     <string name="content_desc_flip_camera_button">Flip camera</string>
+    <string name="content_desc_draw_line_enabled">draw line enabled</string>
+    <string name="content_desc_draw_line_disabled">draw line disabled</string>
 </resources>
