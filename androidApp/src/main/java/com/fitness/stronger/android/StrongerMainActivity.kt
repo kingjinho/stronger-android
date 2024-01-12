@@ -8,6 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
+import androidx.core.content.edit
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -40,7 +41,8 @@ class StrongerMainActivity : ComponentActivity() {
                         .fillMaxSize()
                         .background(MaterialTheme.colorScheme.background),
                     navController = navController,
-                    startDestination = if (isInitialOpen()) {
+                    startDestination = if (isInitialAppOpen()) {
+                        setInitialAppOpenToFalse()
                         Route.Onboarding.name
                     } else {
                         Route.Main.name
@@ -80,7 +82,11 @@ class StrongerMainActivity : ComponentActivity() {
         }
     }
 
-    private fun isInitialOpen() =
+    private fun isInitialAppOpen() =
         application.getSharedPref().getBoolean(Const.PREF_KEY_IS_INITIAL_OPEN, true)
 
+    private fun setInitialAppOpenToFalse() =
+        application.getSharedPref().edit(true) {
+            putBoolean(Const.PREF_KEY_IS_INITIAL_OPEN, false)
+        }
 }
