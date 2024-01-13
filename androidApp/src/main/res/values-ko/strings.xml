@@ -19,5 +19,7 @@
     <string name="content_desc_flip_camera_button">카메라 전환</string>
     <string name="content_desc_draw_line_enabled">선 긋기 기능 활성화</string>
     <string name="content_desc_draw_line_disabled">선 긋기 기능 비활성화</string>
+    <string name="content_desc_switch_camera_to_back">후면 카메라로 전환</string>
+    <string name="content_desc_switch_camera_to_front">전면 카메라로 전환</string>
 
 </resources>

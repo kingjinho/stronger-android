@@ -20,4 +20,6 @@
     <string name="content_desc_flip_camera_button">Flip camera</string>
     <string name="content_desc_draw_line_enabled">draw line enabled</string>
     <string name="content_desc_draw_line_disabled">draw line disabled</string>
+    <string name="content_desc_switch_camera_to_back">switch camera to back</string>
+    <string name="content_desc_switch_camera_to_front">switch camera to front</string>
 </resources>
