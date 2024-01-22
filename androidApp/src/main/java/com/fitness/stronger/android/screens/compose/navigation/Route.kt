@@ -1,4 +1,4 @@
-package com.fitness.stronger.android.screens.navigation
+package com.fitness.stronger.android.screens.compose.navigation
 
 import com.fitness.stronger.android.Const
 
