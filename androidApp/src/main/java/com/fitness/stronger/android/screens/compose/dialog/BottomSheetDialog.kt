@@ -1,4 +1,4 @@
-package com.fitness.stronger.android.screens.dialog
+package com.fitness.stronger.android.screens.compose.dialog
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable

@@ -1,4 +1,4 @@
-package com.fitness.stronger.android.screens.onboarding
+package com.fitness.stronger.android.screens.compose.onboarding
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

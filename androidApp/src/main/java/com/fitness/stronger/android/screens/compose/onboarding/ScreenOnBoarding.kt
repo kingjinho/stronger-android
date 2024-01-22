@@ -1,4 +1,4 @@
-package com.fitness.stronger.android.screens.onboarding
+package com.fitness.stronger.android.screens.compose.onboarding
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.pager.HorizontalPager

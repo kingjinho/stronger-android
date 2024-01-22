@@ -1,4 +1,4 @@
-package com.fitness.stronger.android.screens.main
+package com.fitness.stronger.android.screens.compose.main
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column

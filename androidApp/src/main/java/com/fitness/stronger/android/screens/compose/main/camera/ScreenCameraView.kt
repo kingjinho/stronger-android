@@ -1,9 +1,19 @@
-package com.fitness.stronger.android.screens.main.camera
+package com.fitness.stronger.android.screens.compose.main.camera
 
+import android.content.ContentValues
+import android.icu.text.SimpleDateFormat
+import android.provider.MediaStore
+import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.camera.core.CameraSelector
+import androidx.camera.core.ImageCapture
+import androidx.camera.core.ImageCaptureException
 import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.camera.video.Quality
+import androidx.camera.video.QualitySelector
+import androidx.camera.video.Recorder
+import androidx.camera.video.VideoCapture
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -32,26 +42,51 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.LifecycleOwner
 import com.fitness.stronger.android.R
+import com.fitness.stronger.android.data.ECameraMode
 import com.fitness.stronger.android.data.ECameraType
 import com.fitness.stronger.android.data.ECameraViewRecomposition
 import com.fitness.stronger.android.data.LineData
 import com.fitness.stronger.android.utils.ext.drawLine
+import java.util.Locale
+
+private const val FILE_PATH = "Pictures/stronger"
+private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
+private const val MIME_TYPE = "image/jpeg"
 
 @Composable
 fun ScreenCameraView(modifier: Modifier = Modifier) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
     val cameraProviderFuture = ProcessCameraProvider.getInstance(context)
+    val cameraSelectors = mapOf(
+        ECameraType.FRONT to CameraSelector.DEFAULT_FRONT_CAMERA,
+        ECameraType.BACK to CameraSelector.DEFAULT_BACK_CAMERA
+    )
 
     var cameraProvider: ProcessCameraProvider? by remember {
         mutableStateOf(null)
+    }
+
+    val previewUseCase = androidx.camera.core.Preview.Builder()
+        .build()
+
+    val imageCaptureUseCase = ImageCapture.Builder().build()
+    val recorder = Recorder.Builder()
+        .setQualitySelector(QualitySelector.from(Quality.HIGHEST))
+        .build()
+    val videoOutput = VideoCapture.withOutput(recorder)
+
+    var cameraMode by remember {
+        mutableStateOf(ECameraMode.PHOTO)
     }
 
     var isDrawingEnabled by remember {
@@ -63,8 +98,10 @@ fun ScreenCameraView(modifier: Modifier = Modifier) {
     }
 
     var recompositionDueTo by remember {
-        mutableStateOf<ECameraViewRecomposition?>(null)
+        mutableStateOf(ECameraViewRecomposition.NONE)
     }
+
+    val view = LocalView.current
 
     Column(modifier = modifier.fillMaxSize()) {
         Scaffold(modifier = modifier.weight(6f)) { paddingValues ->
@@ -77,31 +114,29 @@ fun ScreenCameraView(modifier: Modifier = Modifier) {
                             ViewGroup.LayoutParams.MATCH_PARENT,
                             ViewGroup.LayoutParams.MATCH_PARENT,
                         )
+                        id = R.id.camera_preview
                         scaleType = PreviewView.ScaleType.FILL_START
                     }.also { cameraView ->
                         cameraProviderFuture.addListener({
                             cameraProvider = cameraProviderFuture.get()
 
-                            val cameraSelector =
-                                if (cameraProvider!!.hasCamera(CameraSelector.DEFAULT_FRONT_CAMERA)
-                                ) {
-                                    CameraSelector.DEFAULT_FRONT_CAMERA
-                                } else {
-                                    CameraSelector.DEFAULT_BACK_CAMERA
-                                }
+                            val cameraSelector = if (canUseFrontCamera(cameraProvider!!)) {
+                                cameraSelectors[ECameraType.FRONT]
+                            } else {
+                                cameraSelectors[ECameraType.BACK]
+                            }
 
-                            val preview = androidx.camera.core.Preview.Builder()
-                                .build()
-                                .also {
-                                    it.setSurfaceProvider(cameraView.surfaceProvider)
-                                }
+                            previewUseCase.also {
+                                it.setSurfaceProvider(cameraView.surfaceProvider)
+                            }
 
                             try {
                                 cameraProvider!!.unbindAll()
-                                cameraProvider!!.bindToLifecycle(
+                                bindToCameraLifecycle(
+                                    cameraProvider,
                                     lifecycleOwner,
                                     cameraSelector,
-                                    preview
+                                    previewUseCase
                                 )
                             } catch (_: Exception) {
 
@@ -111,39 +146,39 @@ fun ScreenCameraView(modifier: Modifier = Modifier) {
                 },
                 //should only be called when it comes to camera switching
                 update = { cameraView ->
-
                     if (cameraProvider == null) {
                         return@AndroidView
                     }
-                    if (recompositionDueTo == null || recompositionDueTo == ECameraViewRecomposition.LINE) {
+                    if (recompositionDueTo == ECameraViewRecomposition.LINE) {
                         return@AndroidView
                     }
 
                     try {
-                        cameraProvider?.unbindAll()
+                        cameraProvider!!.unbindAll()
 
                         val cameraSelector =
-                            if (cameraProvider!!.hasCamera(CameraSelector.DEFAULT_FRONT_CAMERA)) {
-                                CameraSelector.DEFAULT_FRONT_CAMERA
+                            if (canUseFrontCamera(cameraProvider!!) && isCameraFacingFront(
+                                    cameraType
+                                )
+                            ) {
+                                cameraSelectors[ECameraType.FRONT]
                             } else {
-                                CameraSelector.DEFAULT_BACK_CAMERA
+                                cameraSelectors[ECameraType.BACK]
                             }
 
-                        val preview = androidx.camera.core.Preview.Builder()
-                            .build()
-                            .also {
-                                it.setSurfaceProvider(cameraView.surfaceProvider)
-                            }
+                        previewUseCase.also {
+                            it.setSurfaceProvider(cameraView.surfaceProvider)
+                        }
 
-                        cameraProvider?.bindToLifecycle(
+                        bindToCameraLifecycle(
+                            cameraProvider,
                             lifecycleOwner,
                             cameraSelector,
-                            preview
+                            previewUseCase
                         )
                     } catch (e: IllegalStateException) {
                         e.printStackTrace()
                     }
-
                 })
             if (isDrawingEnabled) {
                 DrawingCanvas(
@@ -185,7 +220,46 @@ fun ScreenCameraView(modifier: Modifier = Modifier) {
             )
 
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    val cameraView = view.findViewById<View>(R.id.camera_preview)
+                    when (cameraMode) {
+                        ECameraMode.PHOTO -> {
+                            val name = SimpleDateFormat(FILENAME_FORMAT, Locale.getDefault())
+                                .format(System.currentTimeMillis())
+                            val contentValues = ContentValues().apply {
+                                put(MediaStore.MediaColumns.DISPLAY_NAME, name)
+                                put(MediaStore.MediaColumns.MIME_TYPE, MIME_TYPE)
+                                put(MediaStore.Images.Media.RELATIVE_PATH, FILE_PATH)
+                            }
+
+                            val outputOptions = ImageCapture.OutputFileOptions
+                                .Builder(
+                                    context.contentResolver,
+                                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                                    contentValues
+                                )
+                                .build()
+
+                            imageCaptureUseCase.takePicture(
+                                outputOptions,
+                                ContextCompat.getMainExecutor(context),
+                                object : ImageCapture.OnImageSavedCallback {
+                                    override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                                        TODO("Not yet implemented")
+                                    }
+
+                                    override fun onError(exception: ImageCaptureException) {
+                                        TODO("Not yet implemented")
+                                    }
+                                }
+                            )
+                        }
+
+                        ECameraMode.VIDEO -> {
+
+                        }
+                    }
+                },
                 modifier = Modifier
                     .size(100.dp)
                     .clip(CircleShape)
@@ -213,11 +287,36 @@ fun ScreenCameraView(modifier: Modifier = Modifier) {
                             ECameraType.FRONT
                         }
                         recompositionDueTo = ECameraViewRecomposition.CAMERA_SWITCH
+                        isDrawingEnabled = false
                     }
             )
         }
     }
 }
+
+private fun bindToCameraLifecycle(
+    cameraProvider: ProcessCameraProvider?,
+    lifecycleOwner: LifecycleOwner,
+    cameraSelector: CameraSelector?,
+    preview: androidx.camera.core.Preview
+) {
+    cameraProvider!!.bindToLifecycle(
+        lifecycleOwner,
+        cameraSelector!!,
+        preview
+    )
+}
+
+private fun canUseFrontCamera(
+    cameraProvider: ProcessCameraProvider,
+): Boolean {
+    return cameraProvider.hasCamera(CameraSelector.DEFAULT_FRONT_CAMERA)
+}
+
+private fun isCameraFacingFront(cameraType: ECameraType): Boolean {
+    return cameraType == ECameraType.FRONT
+}
+
 
 @Composable
 fun DrawingCanvas(modifier: Modifier = Modifier) {
@@ -232,12 +331,12 @@ fun DrawingCanvas(modifier: Modifier = Modifier) {
 
                     val line = LineData(
                         start = change.position - dragAmount,
-                    end = change.position
-                )
+                        end = change.position
+                    )
 
-                lines.add(line)
-            }
-        }) {
+                    lines.add(line)
+                }
+            }) {
         lines.forEach {
             drawLine(it)
         }
