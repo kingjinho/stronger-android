@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="all_10sp">10sp</dimen>
+    <dimen name="all_11sp">11sp</dimen>
+    <dimen name="all_12sp">12sp</dimen>
+    <dimen name="all_13sp">13sp</dimen>
+    <dimen name="all_14sp">14sp</dimen>
+    <dimen name="all_16sp">16sp</dimen>
+    <dimen name="all_18sp">18sp</dimen>
+    <dimen name="all_20sp">20sp</dimen>
+    <dimen name="all_24sp">24sp</dimen>
+    <dimen name="all_28sp">28sp</dimen>
+    <dimen name="all_32sp">32sp</dimen>
+    <dimen name="all_36sp">36sp</dimen>
+    <dimen name="all_40sp">40sp</dimen>
+    <dimen name="all_72sp">72sp</dimen>
+    <dimen name="all_100sp">100sp</dimen>
+
+
+    <dimen name="all_none">-2dp</dimen>
+    <dimen name="all_0dp">0dp</dimen>
+    <dimen name="all_1dp">1dp</dimen>
+    <dimen name="all_4dp">4dp</dimen>
+    <dimen name="all_6dp">6dp</dimen>
+    <dimen name="all_elevation_7dp">7dp</dimen>
+    <dimen name="all_8dp">8dp</dimen>
+    <dimen name="all_12dp">12dp</dimen>
+    <dimen name="all_16dp">16dp</dimen>
+    <dimen name="all_24dp">24dp</dimen>
+    <dimen name="all_32dp">32dp</dimen>
+    <dimen name="all_48dp">48dp</dimen>
+    <dimen name="all_52dp">52dp</dimen>
+    <dimen name="all_56dp">56dp</dimen>
+    <dimen name="all_60dp">60dp</dimen>
+    <dimen name="all_64dp">64dp</dimen>
+    <dimen name="all_80dp">80dp</dimen>
+    <dimen name="all_100dp">100dp</dimen>
+    <dimen name="all_120dp">120dp</dimen>
+    <dimen name="all_128dp">128dp</dimen>
+    <dimen name="all_160dp">160dp</dimen>
+    <dimen name="all_260dp">260dp</dimen>
+    <dimen name="all_300dp">300dp</dimen>
+    <dimen name="all_360dp">360dp</dimen>
+
+</resources>

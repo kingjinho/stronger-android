@@ -18,11 +18,7 @@ android {
     }
 
     buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+        viewBinding = true
     }
 
     packaging {
@@ -32,6 +28,9 @@ android {
     }
 
     buildTypes {
+        getByName("debug") {
+            isMinifyEnabled = false
+        }
         getByName("release") {
             isMinifyEnabled = false
         }
@@ -44,10 +43,6 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
-    }
-
-    buildFeatures {
-        viewBinding = true
     }
 }
 
@@ -88,11 +83,6 @@ dependencies {
     implementation(libs.androidx.camera.video)
     implementation(libs.androidx.camera.view)
     implementation(libs.androidx.camera.extensions)
-
-
-
-
-
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
