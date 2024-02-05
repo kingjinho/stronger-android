@@ -1,4 +1,4 @@
-package com.fitness.stronger.android.screens.view
+package com.fitness.stronger.android.screens.view_system.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
